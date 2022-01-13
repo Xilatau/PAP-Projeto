@@ -1,0 +1,46 @@
+DB Name:XilaKicks
+
+(Marcas)
+ID		Nome
+
+1		Nike
+2		Adidas
+-----------------
+(Marca_Nike)
+ID		Modelo		Quantidade		Tamanho 		Valor
+
+1		Air Max			23				39			109$
+-----------------
+(Marca_Adidas)
+ID		Modelo		Quantidade		Tamanho 		Valor
+
+1		Stan Smith		5				24			90$
+-----------------
+(Vendas)
+ID		Marca		Modelo		Quantidade		Valor		Data_Venda
+
+1		Nike		Air Max			2			218$		3-1-2021.23:43	
+
+Adicionar a marca primerio na tabela (Marcas) e depois uma vez que eu queira adicionar sapatilhas, em vez de escrever a marca, abrir o menu fluutuante e escolher dai a marca, tendo em conta se esta na tabela(marcas). Caso queiramos adicionar uma sapatilha cuja a marca nao apareca, teremos entao que adicionar a tabela (marca)	
+
+Quando for a adicionar uma marca nova, ver se ja existe na base de dados, e caso ja exista, avisar que ja existe nao permitir repetir a marca.
+
+Quando for a adicionar sneakers novos ver se ja existem na base de dados e caso ja exista avisar que ja existe e nao permitir repetir o sneaker, a mesma coisa quando for editar o snkeaer e mudar a marca.
+
+arranjar forma de conseguir o download de um excel sobre os sneakers existentes na base de dados.
+
+arranjar algo para por na home
+
+se necessario criar um login
+
+quando for a editar o snkeaer arranjar forma de por nos campos o que ja estava na tabela anterior
+
+mudar a quantidade de sneakers. Tipo um menu retretivel ou simplesmente mudar a quantidade manualmente
+
+1-multiplicar quantidade por valor
+2-soma total de todos os valores
+3-média do volume de uma caixa de 1 modelo
+4-media (3) vezes a quantidade do modelo
+5-(4x3) volume total da mercadoria
+
+
