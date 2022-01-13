@@ -114,7 +114,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 </div>
 
 <div class="footer">
-	<p style="color:black;text-align:center;font-size:1em;">Copyright © 2021 EmpDrive.<br> All rights reserved.</p>
+	<p style="color:black;text-align:center;font-size:1em;">Copyright © 2021 EmpDrive.<br> All dasdasdas  rights reserved.</p>
 </div>
 
 </body>
