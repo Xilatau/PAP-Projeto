@@ -82,8 +82,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
-<div class="form">
-<h3>XilaKicks</h3>
+
+
+<div class="col-12 col-s-12">
+    <div class="form">
+        <h3>XilaKicks</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
             <div class="form-group">
                 <input type="password" placeholder="New Password..." name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
@@ -100,5 +103,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
         </form>
     </div>    
+</div>
 </body>
 </html>

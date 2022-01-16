@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -38,6 +39,13 @@
 <br>
 <h3 style="font-size: 25px;">Editar Sneakers</h3>
 
+<script>
+function myFunction() {
+  alert("Editado com sucesso!!!");
+}
+</script>
+
+
 <?php
 
   $servername = "localhost";
@@ -53,7 +61,7 @@ $id1 = $_GET['edit_id'];
 $sql1 = "SELECT * FROM sneakers where ID = $id1";
 $resultSet = $conn->query($sql1);
 if($resultSet->num_rows !=1){
-die('id is not in db');
+die('<h3 style="color:red;">ID nao existe!!!</h3>');
 }
 
 $data = $resultSet->fetch_assoc();
@@ -79,11 +87,12 @@ $data = $resultSet->fetch_assoc();
             // Performing insert query execution
             // here our table name is college
             $sql = "UPDATE sneakers set id='$id2',Marca='$marca',Modelo='$modelo',Quantidade='$quntidade',Valor='$valor' where id=$id2";
-              
             $result = mysqli_query($conn, $sql);
             if($result)
             {
-                echo "Editado com sucesso!!!";
+                echo "<h3>Editado com sucesso!!!</h3>";
+                header("Location: show_sneakers.php");
+                exit;
             }else{
                 die(mysqli_error($conn));
             }
@@ -119,9 +128,10 @@ $data = $resultSet->fetch_assoc();
     </br>
         <input type="text" placeholder="Valor..." value="<?= $data['Valor']?>" name="valor" id="valor"> 
     </br></br>
-        <input type="submit" value="Editar" name="submit" id="submit">   
+        <input type="submit" onclick="myFunction()" value="Editar" name="submit" id="submit">   
 </form>
     </div>
 
 </body>
 </html>
+<?php ob_end_flush(); ?>

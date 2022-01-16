@@ -68,14 +68,14 @@ $result = $conn->query($sql);
                     width: 100%;
                     float: none;
                 }
-            
-                
+                        
+}
+
 .main{
 	background-color:white;
 	color:black;
 	padding:15px;
-}                
-}
+}    
 
 
 </style>   
@@ -111,6 +111,8 @@ $result = $conn->query($sql);
 <h3 style="text-align: center;font-family: 'Courier New', Courier, monospace;">Detalhes Sneakers</h3>
 <table border="1" align="center" style="line-height:25px;font-family: 'Courier New', Courier, monospace;">
 <link rel="stylesheet" type="text/css" href="estilos_showsneakers.css">
+
+<div class="col-12 col-s-12">
 <tr>
 <th>ID</th>
 <th>Marca</th>
@@ -135,6 +137,7 @@ if($result->num_rows > 0){
         <!-- Delete Buttion -->
         <td><input type="submit" style="font-family: 'Courier New', Courier, monospace;" onClick="deleteme(<?php echo $row['ID']; ?>)" name="Delete" value="Eliminar"></td>
         </tr>
+        
         <!-- Javascript function for deleting data -->
         <script language="javascript">
 		function deleteme(delid)

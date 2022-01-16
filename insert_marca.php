@@ -29,14 +29,14 @@
         $sql = "INSERT INTO marcas VALUES ('$id','$marca')";
 
         if (empty($marca)){
-            echo "É necessario escrever uma marca!!!";
+            echo "<h3>É necessario escrever uma marca!!!</h3>";
         } elseif (mysqli_query($conn, $sql)){
             echo "<h3>Marca Adicionada com sucesso!!!</h3>";
         } else {
             echo "ERRO:$sql. " 
                         . mysqli_error($conn);
         }
-          
+
         // Close connection
         mysqli_close($conn);
         ?>

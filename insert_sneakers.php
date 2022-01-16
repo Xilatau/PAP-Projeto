@@ -34,13 +34,21 @@
             // here our table name is college
             $sql = "INSERT INTO sneakers VALUES ('$id','$marca','$modelo','$quntidade','$valor')";
               
-            if(mysqli_query($conn, $sql)){
-                echo "<h3>Sneakers Adicionados com sucesso!</h3>"; 
-      
-            } else{
+            if (empty($marca)){
+                echo "<h3>É necessario preencher todos os campos!!!</h3>";
+            } elseif (empty($modelo)){
+                echo "<h3>É necessario preencher todos os campo!!!</h3>";
+            } elseif (empty($quntidade)){
+                echo "<h3>É necessario preencher todos os campos!!!</h3>";
+            } elseif (empty($valor)){
+                echo "<h3>É necessario preencher todos os campos!!!</h3>";
+            } elseif (mysqli_query($conn, $sql)){
+                echo "<h3>Sneaker adicionado com sucesso!!!</h3>";
+            } else {
                 echo "ERRO:$sql. " 
-                    . mysqli_error($conn);
+                            . mysqli_error($conn);
             }
+              
               
             // Close connection
             mysqli_close($conn);
