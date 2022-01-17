@@ -35,21 +35,34 @@
             $sql = "INSERT INTO sneakers VALUES ('$id','$marca','$modelo','$quntidade','$valor')";
               
             if (empty($marca)){
-                echo "<h3>É necessario preencher todos os campos!!!</h3>";
+                echo('<script type="text/JavaScript">
+                alert("É necessario preencher todos os campo!!!");
+                location.replace("input_sneakers.php");
+                </script>');
             } elseif (empty($modelo)){
-                echo "<h3>É necessario preencher todos os campo!!!</h3>";
+                echo('<script type="text/JavaScript">
+                alert("É necessario preencher todos os campo!!!");
+                location.replace("input_sneakers.php");
+                </script>');
             } elseif (empty($quntidade)){
-                echo "<h3>É necessario preencher todos os campos!!!</h3>";
+                echo('<script type="text/JavaScript">
+                alert("É necessario preencher todos os campo!!!");
+                location.replace("input_sneakers.php");
+                </script>');
             } elseif (empty($valor)){
-                echo "<h3>É necessario preencher todos os campos!!!</h3>";
+                echo('<script type="text/JavaScript">
+                alert("É necessario preencher todos os campo!!!");
+                location.replace("input_sneakers.php");
+                </script>');
             } elseif (mysqli_query($conn, $sql)){
-                echo "<h3>Sneaker adicionado com sucesso!!!</h3>";
+                echo('<script type="text/JavaScript">
+                alert("Sneakers adicionados com sucesso!!!");
+                location.replace("input_sneakers.php");
+                </script>');
             } else {
                 echo "ERRO:$sql. " 
                             . mysqli_error($conn);
-            }
-              
-              
+            }    
             // Close connection
             mysqli_close($conn);
         }

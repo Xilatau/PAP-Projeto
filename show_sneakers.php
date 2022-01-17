@@ -133,9 +133,9 @@ if($result->num_rows > 0){
         <td style="text-align: center;"><?php echo $row['Quantidade']; ?></td>
         <td style="text-align: center;"><?php echo $row['Valor']; ?></td>
         <!--Edit option -->
-        <td><input type="submit" value="Editar" style="font-family: 'Courier New', Courier, monospace;" onclick="window.location.href='edit.php?edit_id=<?php echo $row['ID']?>'" alt="edit" ></td>
+        <td><input type="submit" value="Editar" style="font-family: 'Courier New', Courier, monospace;background-color: green;" onclick="window.location.href='edit.php?edit_id=<?php echo $row['ID']?>'" alt="edit" ></td>
         <!-- Delete Buttion -->
-        <td><input type="submit" style="font-family: 'Courier New', Courier, monospace;" onClick="deleteme(<?php echo $row['ID']; ?>)" name="Delete" value="Eliminar"></td>
+        <td><input type="submit" style="font-family: 'Courier New', Courier, monospace;background-color: red;" onClick="deleteme(<?php echo $row['ID']; ?>)" name="Delete" value="Eliminar"></td>
         </tr>
         
         <!-- Javascript function for deleting data -->

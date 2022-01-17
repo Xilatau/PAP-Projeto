@@ -3,8 +3,22 @@
   
 <head>
     <title>Insert Page page</title>
+
+    <script>
+function myFunction() {
+  alert("Editado com sucesso!!!");
+}
+</script>
+
+
 </head>
   
+<script>
+        function 1234() {
+          alert($test);
+        }
+        </script>
+
 <body>
         <?php
 
@@ -16,6 +30,8 @@
   // Create connection
   $conn = mysqli_connect($servername, $username, $password, $database);
   
+
+
   // Check connection
   if($conn === false){
     die("ERROR: Could not connect. " 
@@ -28,10 +44,28 @@
         // here our table name is college
         $sql = "INSERT INTO marcas VALUES ('$id','$marca')";
 
+        $select = mysqli_query($conn, "SELECT * FROM marcas WHERE Marca = '".$_POST['nomemarca']."'");
+        $test = mysqli_num_rows($select);
+
+        if(mysqli_num_rows($select)) {
+            echo('<script type="text/JavaScript">
+            alert("A marca já existe!!!");
+            location.replace("input_marca.php");
+            </script>');
+            exit;
+        }
         if (empty($marca)){
-            echo "<h3>É necessario escrever uma marca!!!</h3>";
+            echo('<script type="text/JavaScript">
+            alert("É necessario escrever uma marca!!!");
+            location.replace("input_marca.php");
+            </script>');
+            exit;
         } elseif (mysqli_query($conn, $sql)){
-            echo "<h3>Marca Adicionada com sucesso!!!</h3>";
+            echo('<script type="text/JavaScript">
+            alert("Marca adicionada com sucesso!!!");
+            location.replace("input_marca.php");
+            </script>');
+            exit;
         } else {
             echo "ERRO:$sql. " 
                         . mysqli_error($conn);

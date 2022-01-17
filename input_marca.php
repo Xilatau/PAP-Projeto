@@ -100,6 +100,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 }
 </script>
 
+
 <div class="col-12 col-s-12">
     <div style="margin: 20px;border: 20px;">
         <form action="insert_marca.php" method="post">
