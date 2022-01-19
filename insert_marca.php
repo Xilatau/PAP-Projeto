@@ -12,12 +12,6 @@ function myFunction() {
 
 
 </head>
-  
-<script>
-        function 1234() {
-          alert($test);
-        }
-        </script>
 
 <body>
         <?php
