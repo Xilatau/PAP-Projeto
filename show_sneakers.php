@@ -110,7 +110,6 @@ $result = $conn->query($sql);
 <div class="col-12 col-s-12">
 <h3 style="text-align: center;font-family: 'Courier New', Courier, monospace;">Detalhes Sneakers</h3>
 <table border="1" align="center" style="line-height:25px;font-family: 'Courier New', Courier, monospace;">
-<link rel="stylesheet" type="text/css" href="estilos_showsneakers.css">
 
 <div class="col-12 col-s-12">
 <tr>
