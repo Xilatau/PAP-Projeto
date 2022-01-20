@@ -128,15 +128,30 @@ $data2=$result2->fetch_assoc();
     </br>
         <label for="Quantidade">Quantidade:</label>
     </br>
-        <input type="text" placeholder="Quantidade..." value="<?= $data['Quantidade']?>" name="quantidade" id="quantidade"> 
+        <input type="text" placeholder="Quantidade..." onkeypress="isInputNumber(event)" value="<?= $data['Quantidade']?>" name="quantidade" id="quantidade"> 
     </br>
         <label for="Valor">Valor:</label>
     </br>
-        <input type="text" placeholder="Valor..." value="<?= $data['Valor']?>" name="valor" id="valor"> 
+        <input type="text" placeholder="Valor..." onkeypress="isInputNumber(event)" value="<?= $data['Valor']?>" name="valor" id="valor"> 
     </br></br>
         <input type="submit" onclick="myFunction()" value="Editar" name="submit" id="submit">   
 </form>
     </div>
+
+    <script>
+            
+            function isInputNumber(evt){
+                
+                var ch = String.fromCharCode(evt.which);
+                
+                if(!(/[0-9]/.test(ch))){
+                    evt.preventDefault();
+                }
+                
+            }
+            
+        </script>
+
 
 </body>
 </html>

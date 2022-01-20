@@ -141,17 +141,32 @@ $result1 = mysqli_query($conn, $query);
     </br>
         <label for="Quantidade">Quantidade:</label>
     </br>
-        <input type="text" placeholder="Quantidade..." name="quantidade" id="quantidade"> 
+        <input type="text" onkeypress="isInputNumber(event)" placeholder="Quantidade..." name="quantidade" id="quantidade"> 
     </br>
         <label for="Valor">Valor:</label>
     </br>
-        <input type="text" placeholder="Valor..." name="valor" id="valor"> 
+        <input type="text" onkeypress="isInputNumber(event)" placeholder="Valor..." name="valor" id="valor"> 
     </br><br>
         <input type="submit"  value="Inserir Sneakers" name="submit" id="submit">   
     </form>
 
 </div>
 </div>
+
+<script>
+            
+            function isInputNumber(evt){
+                
+                var ch = String.fromCharCode(evt.which);
+                
+                if(!(/[0-9]/.test(ch))){
+                    evt.preventDefault();
+                }
+                
+            }
+            
+        </script>
+
 
 </div>
 <hr style="width:90%;">
