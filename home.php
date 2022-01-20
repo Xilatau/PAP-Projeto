@@ -85,6 +85,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
 </div>
 
+
+
 <script>
                 function Menu_Mobile() {
                     var x = document.getElementById("myTopnav");
