@@ -87,6 +87,7 @@ $data = $resultSet->fetch_assoc();
             // Performing insert query execution
             // here our table name is college
             $sql = "UPDATE sneakers set id='$id2',Marca='$marca',Modelo='$modelo',Quantidade='$quntidade',Valor='$valor' where id=$id2";
+
             $result = mysqli_query($conn, $sql);
             if($result)
             {
@@ -102,19 +103,24 @@ $data = $resultSet->fetch_assoc();
 
 ?>
 
+<?php
+
+$sql2 = "SELECT Marca FROM sneakers WHERE ID='$id1'";
+$result2 = mysqli_query($conn,$sql2);
+$data2=$result2->fetch_assoc();
+
+?>
+
 <div style="margin: 20px;border: 20px;">
 <form method="post">
         <label for="Marca">Nome da Marca:</label>
     <br>
 <select name="nomemarca">
-<option value="">Escolher Marca</option>
-<?php while($row1 = mysqli_fetch_array($result1)):;?>
-<option value="<?php echo $row1[1];?>"><?php echo $row1[1];?>
+
+<option value="<?= $data2['Marca']?>"><?= $data2['Marca']?>
 </option>
-
-<?php endwhile;?>
-
 </select>
+
     </br>
         <label for="Modelo">Modelo:</label>
     </br>
