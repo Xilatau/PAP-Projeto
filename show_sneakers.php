@@ -13,6 +13,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 include 'dbconn.php';
 $sql = "SELECT * FROM sneakers";
 $result = $conn->query($sql);
+
+$sql1 = "SELECT Modelo,Valor*Quantidade AS preco_total FROM sneakers;";
+$result1 = $conn->query($sql1);
+
+$sql2 = "SELECT SUM(Quantidade*Valor) AS preco_123 FROM sneakers;";
+$result2 = $conn->query($sql2);
+
 ?>
 
 <!doctype html>
@@ -77,6 +84,9 @@ $result = $conn->query($sql);
 	padding:15px;
 }    
 
+th{
+	text-align:center;
+}
 
 </style>   
 
@@ -109,6 +119,8 @@ $result = $conn->query($sql);
 
 <div class="col-12 col-s-12">
 <h3 style="text-align: center;font-family: 'Courier New', Courier, monospace;">Detalhes Sneakers</h3>
+		<?php if ($row2 = $result2->fetch_assoc()) {}?>
+<h3 style="text-align: center;font-family: 'Courier New', Courier, monospace;color:#767EED;">Valor total de Inventário:<?php echo $row2['preco_123']; ?></h3>
 <table border="1" align="center" style="line-height:25px;font-family: 'Courier New', Courier, monospace;">
 
 <div class="col-12 col-s-12">
@@ -118,6 +130,7 @@ $result = $conn->query($sql);
 <th>Modelo</th>
 <th>Quantidade</th>
 <th>Valor</th>
+<th>Valor Total</th>
 </tr>
 
 <?php
@@ -131,6 +144,8 @@ if($result->num_rows > 0){
         <td style="text-align: center;"><?php echo $row['Modelo']; ?></td>
         <td style="text-align: center;"><?php echo $row['Quantidade']; ?></td>
         <td style="text-align: center;"><?php echo $row['Valor']; ?></td>
+		<?php if ($row1 = $result1->fetch_assoc()) {}?>
+		<td style="text-align: center;"><?php echo $row1['preco_total']; ?></td>
         <!--Botão editar -->
         <td><input type="submit" value="Editar" style="font-family: 'Courier New', Courier, monospace;background-color: green;" onclick="window.location.href='edit.php?edit_id=<?php echo $row['ID']?>'" alt="edit" ></td>
         <!-- Botão eliminar -->
@@ -154,7 +169,7 @@ else
 {
 	?>
 	<tr>
-    <th colspan="2">Detalhes não encontrados!!!</th>
+    <th style="color:red;" colspan="2">Detalhes não encontrados!!!</th>
     </tr>
     <?php
 }
@@ -162,7 +177,6 @@ else
 </table>
 </div>
 
-</div>
 <hr style="width:90%;">
 </div>
 
