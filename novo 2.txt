@@ -43,4 +43,7 @@ mudar a quantidade de sneakers. Tipo um menu retretivel ou simplesmente mudar a 
 4-media (3) vezes a quantidade do modelo
 5-(4x3) volume total da mercadoria
 
+UPDATE Inventory
+   SET Quantity = Quantity - 1
+ WHERE InventoryID = 2
 

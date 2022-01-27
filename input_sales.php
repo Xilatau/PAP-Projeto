@@ -15,11 +15,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="estilos_sneakers.css">
-    <title>Inserir Kicks</title>
+    <title>Efetuar Venda</title>
 </head>
 
 <style>
-<?php include "estilos_sneakers.css" ?>
+    <?php include "estilos_showsneakers.css" ?>
 
 @media screen and (max-width: 600px) 
 {
@@ -104,7 +104,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 }
 </script>
 <br>
-<h3 style="font-size: 25px;">Inserir Sneakers</h3>
+<h3 style="font-size: 25px;">Efetuar Vendas</h3>
 
 <?php
 $servername = "localhost";
@@ -112,60 +112,57 @@ $username = "root";
 $password = "";
 $database = "xilakicks";
     $conn = NEW Mysqli($servername, $username, $password, $database);
-    $resultSet = $conn->query("SELECT Marca FROM marcas");
-    $query = "SELECT * FROM marcas";
-
-$result1 = mysqli_query($conn, $query);
-
-
+    $sql = "SELECT * FROM sneakers";
+    $result = $conn->query($sql);
+    
+    $sql1 = "SELECT Modelo,Valor*Quantidade AS preco_total FROM sneakers;";
+    $result1 = $conn->query($sql1);
+    
+    $sql2 = "SELECT SUM(Quantidade*Valor) AS preco_123 FROM sneakers;";
+    $result2 = $conn->query($sql2);
+    
 ?>
 
+<table border="1" align="center" style="line-height:25px;font-family: 'Courier New', Courier, monospace;">
+<div class="col-12 col-s-12">
+<tr>
+<th>ID</th>
+<th>Marca</th>
+<th>Modelo</th>
+<th>Quantidade</th>
+<th>Valor</th>
+<th>Valor Total</th>
+</tr>
 
-<div style="margin: 20px;border: 20px;">
-<form method="post" action="insert_sneakers.php">
-        <label for="Marca">Nome da Marca:</label>
-    <br>
-<select name="nomemarca">
-<option value="">Escolher Marca</option>
-<?php while($row1 = mysqli_fetch_array($result1)):;?>
-
-<option value="<?php echo $row1[1];?>"><?php echo $row1[1];?></option>
-
-<?php endwhile;?>
-</select>
-
-    </br>
-        <label for="Modelo">Modelo:</label>
-    </br>
-        <input type="text" placeholder="Modelo..." name="modelo" id="modelo"> 
-    </br>
-        <label for="Quantidade">Quantidade:</label>
-    </br>
-        <input type="text" onkeypress="isInputNumber(event)" placeholder="Quantidade..." name="quantidade" id="quantidade"> 
-    </br>
-        <label for="Valor">Valor:</label>
-    </br>
-        <input type="text" onkeypress="isInputNumber(event)" placeholder="Valor..." name="valor" id="valor"> 
-    </br><br>
-        <input type="submit"  value="Inserir Sneakers" name="submit" id="submit">   
-    </form>
-
+<?php
+//Fetch Data form database
+if($result->num_rows > 0){
+	while($row = $result->fetch_assoc()){
+		?>
+		<tr style="text-align: center;">
+        <td style="text-align: center;"><?php echo $row['ID']; ?></td>
+        <td style="text-align: center;"><?php echo $row['Marca']; ?></td>
+        <td style="text-align: center;"><?php echo $row['Modelo']; ?></td>
+        <td style="text-align: center;"><?php echo $row['Quantidade']; ?></td>
+        <td style="text-align: center;"><?php echo $row['Valor']; ?></td>
+		<?php if ($row1 = $result1->fetch_assoc()) {}?>
+		<td style="text-align: center;"><?php echo $row1['preco_total']; ?></td>
+        <td><input type="submit" value="Efetuar Venda" style="font-family: 'Courier New', Courier, monospace;background-color: green;" onclick="window.location.href='insert_venda.php?venda_id=<?php echo $row['ID']?>'" alt="edit" ></td>
+        </tr>
+        <?php
+	}
+}
+else
+{
+	?>
+	<tr>
+    <th style="color:red;" colspan="2">Detalhes não encontrados!!!</th>
+    </tr>
+    <?php
+}
+?>
+</table>
 </div>
-</div>
-
-<script>
-            
-            function isInputNumber(evt){
-                
-                var ch = String.fromCharCode(evt.which);
-                
-                if(!(/[0-9]/.test(ch))){
-                    evt.preventDefault();
-                }
-                
-            }
-            
-        </script>
 
 
 </div>
