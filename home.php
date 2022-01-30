@@ -18,7 +18,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   <link rel="stylesheet" href="estilos_sneakers.css">
   <title>Home</title>
 <style>
-<?php include "estilos_sneakers.css" ?>
+<?php include "estilos_showsneakers.css" ?>
 
 @media screen and (max-width: 600px) 
 {
@@ -67,6 +67,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                
 }
 
+th{
+	text-align:center;
+}
+
+
 
 </style>
 </head>
@@ -100,16 +105,64 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 
 
+<br>
+<br>
+<br>
+<div style="margin: 20px;border: 20px;">
+<center>
+<form action="" method="GET">
+    <div class="input-group mb-3">
+    <h3 style="font-size: 25px;">Procurar Sneakers</h3>
+    <input type="text" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" placeholder="Procurar Sneakers">
+    <button type="submit">Procurar</button>
+    <br>
+    </div>
+</form>
 
-
-
+<table border="1" align="center" style="line-height:25px;font-family: 'Courier New', Courier, monospace;">
+<tr>
+    <th style="text-align: center;">ID</th>
+    <th style="text-align: center;">Marca</th>
+    <th style="text-align: center;">Modelo</th>
+    <th style="text-align: center;">Quantidade</th>
+    <th style="text-align: center;">Valor</th>
+</tr>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+    <?php 
+    $con = mysqli_connect("localhost","root","","xilakicks");
+        if(isset($_GET['search']))
+        {
+        $filtervalues = $_GET['search'];
+        $query = "SELECT * FROM sneakers WHERE CONCAT(Marca,Modelo,Quantidade,Valor) LIKE '%$filtervalues%' ";
+        $query_run = mysqli_query($con, $query);
+            if(mysqli_num_rows($query_run) > 0)
+            {
+            foreach($query_run as $items)
+            {
+            ?>
+                <tr>
+                    <td style="text-align: center;"><?= $items['ID']; ?></td>
+                    <td style="text-align: center;"><?= $items['Marca']; ?></td>
+                    <td style="text-align: center;"><?= $items['Modelo']; ?></td>
+                    <td style="text-align: center;"><?= $items['Quantidade']; ?></td>
+                    <td style="text-align: center;"><?= $items['Valor']; ?></td>
+                </tr>
+            <?php
+            }
+            }
+else
+    {
+        ?>
+            <tr>
+                <td colspan="4">Nada Encontrado!!!</td>
+            </tr>
+<?php
+    }
+        }
+?>
+</table>
+<center>
+    </div>
 
 </div>
 <hr style="width:90%;">

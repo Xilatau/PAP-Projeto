@@ -126,8 +126,8 @@ $result = $conn->query($sql);
 <table border="1" align="center" style="line-height:25px;font-family: 'Courier New', Courier, monospace;">
 <link rel="stylesheet" type="text/css" href="estilos_showsneakers.css">
 <tr>
-<th width="50%">ID</th>
-<th width="50%">Marca</th>
+<th width="50%" style="text-align: center;">ID</th>
+<th width="50%" style="text-align: center;">Marca</th>
 </tr>
 
 
