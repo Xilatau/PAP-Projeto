@@ -50,21 +50,30 @@ $id2 = $_GET['venda_id'];
 $conn = NEW mysqli($servername, $username, $password, $database);
 $sql2 = "SELECT * FROM sneakers where ID = $id2;";
 $result2 = $conn->query($sql2);
+
+
+
 ?>
-<?php if ($row2 = $result2->fetch_assoc()) {}?>
-<h3 style="font-size: 25px;"><?php echo  $row2['Marca'] . ' ' . $row2['Modelo'];?></h3> 
 
+<h3 style="font-size: 25px;">
+<?php if ($row2 = $result2->fetch_assoc()) {
+	echo $row2['Marca'] . ' ' . $row2['Modelo'];
+	$qunti = $row2['Quantidade'];
+	$valori = $row2['Valor'];
+}
+?>
 
+</h3> 
 
 <script>
 function myFunction() {
-  alert("Editado com sucesso!!!");
+  alert("Venda efetuada com sucesso!!!");
 }
 </script>
 
 <script>
 function myFunction1() {
-  alert("Quantidade não existente!!! ");
+  alert("Quantidade não existente!!!");
 }
 </script>
 
@@ -84,7 +93,7 @@ $id1 = $_GET['venda_id'];
 $sql1 = "SELECT * FROM sneakers where ID = $id1";
 $resultSet = $conn->query($sql1);
 if($resultSet->num_rows !=1){
-die('<h3 style="color:red;">ID nao existe!!!</h3>');
+die('<h3 style="color:red;">ID não existe!!!</h3>');
 }
 
 $data = $resultSet->fetch_assoc();
@@ -101,8 +110,6 @@ $data = $resultSet->fetch_assoc();
         if (isset($_POST['submit']))
         {
             $id = '';
-            $marca = $_POST['nomemarca'];
-            $modelo = $_POST['modelo'];
             $quntidade1 = $_POST['quantidade'];
             $valor1 = $_POST['valor'];
             $id2 = $_GET['venda_id'];
@@ -112,13 +119,35 @@ $data = $resultSet->fetch_assoc();
             $sql = "UPDATE sneakers SET Quantidade = Quantidade - $quntidade1, Valor= Valor - $valor1 WHERE ID=$id2";
 
             $result = mysqli_query($conn, $sql);
-            if($result)
-            {
-                echo "<h3>Editado com sucesso!!!</h3>";
-                header("Location: input_sales.php");
-                exit;
-            }else{
-                die(mysqli_error($conn));
+			if(($result)) {
+				echo('<script type="text/JavaScript">
+				alert("Venda efetuada com sucesso!!!");
+				location.replace("input_sales.php");
+				</script>');
+				exit;
+			}
+			if (empty($quntidade1 and $valor1)){
+            echo('<script type="text/JavaScript">
+            alert("É necessario preencher todos os campos!!!");
+            location.replace("input_sales.php");
+            </script>');
+            exit;	
+            }
+			if (($quntidade1 > $qunti)){
+            echo('<script type="text/JavaScript">
+            alert("Quantidade não existente!!!");
+            location.replace("input_sales.php");
+            </script>');
+            exit;
+			}
+			if (($valor1 > $valori)){
+            echo('<script type="text/JavaScript">
+            alert("Quantidade não existente!!!");
+            location.replace("input_sales.php");
+            </script>');
+            exit;
+			}else{
+            die(mysqli_error($conn));
             }
             // Close connection
             mysqli_close($conn);
@@ -127,11 +156,9 @@ $data = $resultSet->fetch_assoc();
 ?>
 
 <?php
-
 $sql2 = "SELECT Marca FROM sneakers WHERE ID='$id1'";
 $result2 = mysqli_query($conn,$sql2);
 $data2=$result2->fetch_assoc();
-
 ?>
 
 
@@ -146,7 +173,7 @@ $data2=$result2->fetch_assoc();
     </br>
         <input type="text" placeholder="Valor..." onkeypress="isInputNumber(event)" name="valor" id="valor"> 
     </br></br>
-        <input type="submit" onclick="myFunction()" value="Editar" name="submit" id="submit">   
+        <input type="submit" onclick= value="Editar" name="submit" id="submit">   
 </form>
     </div>
 
