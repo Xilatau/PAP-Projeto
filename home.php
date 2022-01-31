@@ -154,7 +154,7 @@ else
     {
         ?>
             <tr>
-                <td colspan="4">Nada Encontrado!!!</td>
+                <td style="color:red;" colspan="4">Nada Encontrado!!!</td>
             </tr>
 <?php
     }
