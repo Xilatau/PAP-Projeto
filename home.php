@@ -83,6 +83,7 @@ th{
 		<a href="input_sneakers.php">Adicionar Sneakers</a>
         <a href="show_sneakers.php">Mostrar Sneakers</a>
         <a href="input_sales.php">Efetuar Vendas</a>  
+		<a href="imagens.php">Adicionar Imagens</a>
         <a style="float: right;display:block;" href="reset-password.php">Perfil</a>
         <a style="float: right;display:block;" href="logout.php">Logout</a>
         <!-- Para quando estiver no mobile a navbar ficar responsiva -->

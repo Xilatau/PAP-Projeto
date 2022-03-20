@@ -85,6 +85,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <a href="show_sneakers.php">Mostrar Sneakers</a>
         <a href="input_sales.php">Efetuar Vendas</a>
         <a style="float: right;display:block;" href="reset-password.php">Perfil</a>
+				<a href="imagens.php">Adicionar Imagens</a>
         <a style="float: right;display:block;" href="logout.php">Logout</a>
         <!-- Para quando estiver no mobile a navbar ficar responsiva -->
         <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="Menu_Mobile()">&#9776;</a>

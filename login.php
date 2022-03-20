@@ -1,3 +1,4 @@
+
 <?php
 // Initialize the session
 session_start();
@@ -100,14 +101,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
-        <?php 
-        if(!empty($login_err)){
-            echo '<div class="alert alert-danger">' . $login_err . '</div>';
-        }        
-        ?>
 <div class="form">
 <h3>XilaKicks</h3>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="" method="post">
             <div class="form-group">
                 <input type="text" name="username" placeholder="Login..." class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                 <span class="invalid-feedback"><br><?php echo $username_err; ?></span>
