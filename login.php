@@ -102,6 +102,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
 <div class="form">
+<video width="100" height="100" autoplay muted loop>
+  <source src="logo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 <h3>XilaKicks</h3>
         <form action="" method="post">
             <div class="form-group">

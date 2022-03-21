@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13-Jan-2022 às 17:23
+-- Tempo de geração: 21-Mar-2022 às 22:16
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `xilakicks`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `images`
+--
+
+CREATE TABLE `images` (
+  `Modelo` text NOT NULL,
+  `image_url` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `images`
+--
+
+INSERT INTO `images` (`Modelo`, `image_url`) VALUES
+('Air Jordan', 'uploads/IMG-623774514cd845.57810387.jpg'),
+('VaporMax', 'uploads/IMG-623776ac877435.08845498.jpg'),
+('sgsdrgd', 'uploads/IMG-62377cda1677a7.59479115.png');
 
 -- --------------------------------------------------------
 
@@ -43,7 +63,10 @@ INSERT INTO `marcas` (`ID`, `Marca`) VALUES
 (6, 'New Balance'),
 (11, 'Vans'),
 (12, 'Yeezy'),
-(13, 'Fila');
+(13, 'Fila'),
+(14, 'Massimo Dutti'),
+(15, 'sadasd'),
+(16, 'sdfgdhtry');
 
 -- --------------------------------------------------------
 
@@ -64,10 +87,12 @@ CREATE TABLE `sneakers` (
 --
 
 INSERT INTO `sneakers` (`ID`, `Marca`, `Modelo`, `Quantidade`, `Valor`) VALUES
-(1, 'Nike', 'Air Force', 10, 200),
-(5, 'Yeezy', 'beluga', 10, 400),
-(6, 'Nike', 'Air Jordan red', 5, 450),
-(7, 'Fila', 'Disruptor', 10, 100);
+(1, 'Nike', 'Air Jordan', 96, 498),
+(5, 'Yeezy', 'beluga', 100, 400),
+(6, 'Nike', 'Air Jordan', 100, 450),
+(7, 'Fila', 'Disruptor', 10, 100),
+(9, 'Nike', 'VaporMax', 2, 100),
+(20, 'Yeezy', 'te465trq', 3262, 245645);
 
 -- --------------------------------------------------------
 
@@ -166,13 +191,13 @@ ALTER TABLE `vendas`
 -- AUTO_INCREMENT de tabela `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `sneakers`
 --
 ALTER TABLE `sneakers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `users`

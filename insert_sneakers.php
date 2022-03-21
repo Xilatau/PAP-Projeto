@@ -33,15 +33,17 @@
             // Performing insert query execution
             // here our table name is college
             $sql = "INSERT INTO sneakers VALUES ('$id','$marca','$modelo','$quntidade','$valor')";
-              
-            if (empty($marca)){
-                echo('<script type="text/JavaScript">
-                alert("É necessario preencher todos os campo!!!");
+			$sql1 = "SELECT modelo FROM `sneakers` WHERE modelo='$modelo'";
+            $result = mysqli_query($conn,$sql1);
+			  
+            if(mysqli_num_rows($result) == 1){
+				echo('<script type="text/JavaScript">
+                alert("Sneaker já existe!!!");
                 location.replace("input_sneakers.php");
                 </script>');
-            } elseif (empty($modelo)){
+			}elseif (empty($modelo)){
                 echo('<script type="text/JavaScript">
-                alert("É necessario preencher todos os campo!!!");
+                alert("É necessario preencher todos os campos!!!");
                 location.replace("input_sneakers.php");
                 </script>');
             } elseif (empty($quntidade)){
@@ -54,19 +56,25 @@
                 alert("É necessario preencher todos os campo!!!");
                 location.replace("input_sneakers.php");
                 </script>');
+            }elseif (empty($marca)){
+              echo('<script type="text/JavaScript">
+             alert("É necessario preencher todos os campo!!!");
+             location.replace("input_sneakers.php");
+             </script>');
             } elseif (mysqli_query($conn, $sql)){
                 echo('<script type="text/JavaScript">
                 alert("Sneakers adicionados com sucesso!!!");
                 location.replace("input_sneakers.php");
                 </script>');
-            } else {
+            }
+			else {
                 echo "ERRO:$sql. " 
                             . mysqli_error($conn);
             }    
             // Close connection
             mysqli_close($conn);
-        }
-
+        
+    }
         ?>
 
 </body>
