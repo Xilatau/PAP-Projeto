@@ -157,7 +157,7 @@ if($result->num_rows > 0){
         <script language="javascript">
 		function deleteme(delid)
 		{
-			if(confirm("Queres mesmo apagar?")){
+			if(confirm("Deseja mesmo apagar?")){
 				window.location.href='delete.php?del_id=' +delid+'';
 				return true;
 			}

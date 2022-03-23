@@ -151,7 +151,7 @@ $result1 = mysqli_query($conn, $query);
 
 
 if (!$conn) {
-	echo "Connection failed!";
+	echo "Falha a conectar á base de dados.";
 	exit();
 }
 
@@ -168,7 +168,7 @@ if (isset($_POST['submit']) && isset($_FILES['my_image'])) {
 	$modelos = filter_input(INPUT_POST, 'modelos', FILTER_SANITIZE_STRING);
 	if ($error === 0) {
 		if ($img_size > 125000) {
-			$em = "Sorry, your file is too large.";
+			$em = "Erro, imagem muito pesada.";
 		    header("Location: erro.php?error=$em");
 		}else {
 			$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
@@ -185,15 +185,16 @@ if (isset($_POST['submit']) && isset($_FILES['my_image'])) {
 				$sql = "INSERT INTO images(modelo,image_url) VALUES ('$modelos','$img_upload_path')";
 				mysqli_query($conn, $sql);
 				header ("Location:home.php");
-                echo "lol";
 			}else {
-				$em = "You can't upload files of this type";
+				$em = "Nao é possivel adicionar imagens deste tipo.";
 		        header("Location: imagens.php?error=$em");
 			}
 		}
 	}else {
-		$em = "unknown error occurred!";
-		header("Location: imagens.php?error=$em");
+        echo('<script type="text/JavaScript">
+        alert("É necessario preencher todos os campos!!!");
+        location.replace("imagens.php");
+        </script>');
 	}
 }else {
 }
@@ -202,7 +203,7 @@ ob_end_flush();
 ?>
 
 <?php
-$sql4 = "SELECT * FROM images   ";  
+$sql4 = "SELECT * FROM images";  
 $result = mysqli_query($conn, $sql4);  
 ?>
 <br>
