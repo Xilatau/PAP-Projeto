@@ -12,8 +12,8 @@
        	  <li onclick="location.href='about.php';">Sobre</li>
 		  <li onclick="location.href='contacto.php';">Contacto</li>
 		  <li onclick="location.href='search.php';">Procurar</li>
-		  
-		  <div class="dropdown">
+
+          <div class="dropdown">
 		  <li onclick="location.href='#';">Marcas</li>
           <div class="dropdown-content">
           <?php
@@ -31,8 +31,8 @@ if($result->num_rows > 0){
 ?>
           </div>
           </div>
-
        </ul>
+
 	 </div>
 </div>
 </center>
@@ -64,45 +64,6 @@ if($result->num_rows > 0){
    </script>
 
 <style>
-
-.dropbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  text-align: center;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 15px 40px;
-  text-decoration: none;
-  display: block;
-  text-align: center;
-}
-
-.dropdown-content a:hover {background-color: #ddd;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-
-
 body{
 	   	 background-color: #1b1c1e;
 			font-family: sans-serif;
@@ -192,43 +153,87 @@ body{
   }
 }
 
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 </style>
 </head>
 <body>
 <br>
 
+<?php
+//Connection for database
+include 'dbconn.php';
+$sql = "SELECT * FROM marcas";
+$result = $conn->query($sql);
 
+?>
 <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
 $database = "xilakicks";
 $conn = NEW Mysqli($servername, $username, $password, $database);
+?>
 
-$query = "SELECT * FROM sneakers INNER JOIN images ON sneakers.Modelo = images.Modelo;"; 
-$query_run = mysqli_query($conn, $query);
-
-while($row = mysqli_fetch_array($query_run)){
-  ?>
-  <center>
-<div class="row">
-<div class="col-12">
-<div class="card">
-  <div class="container">
-  <img src="<?php echo $row['image_url']?> ." alt="Avatar" style="width:100%">
-      <h4><b>Modelo: <?php echo $row['Modelo'] ?> </b></h4> 
-      <p>Marca: <?php echo $row['Marca'] ?> </p> 
-      <p>Preco: <?php echo $row['Valor'] ?>€ </p> 
-	  <p style="text-align: right;color:green;">Quantidade Disponivel: <?php echo $row['Quantidade'] ?> </p> 
-  </div>
-</div>
-</div>
-</div>
+<table border="1" align="center" style="line-height:25px;font-family: 'Courier New', Courier, monospace;">
+<div class="col-12 col-s-12">
+<tr>
+<th>Marca</th>
+</tr>
 
 <?php
+//Fetch Data form database
+if($result->num_rows > 0){
+	while($row = $result->fetch_assoc()){
+		?>
+        <td onclick="location.href='search.php?search=<?php echo $row['Marca']; ?>';" style="text-align: center;cursor:pointer"><?php echo $row['Marca']; ?></td>
+        </tr>
+        <?php
+	}
+}
+else
+{
+	?>
+	<tr>
+    <th style="color:red;" colspan="2">Detalhes não encontrados!!!</th>
+    </tr>
+    <?php
 }
 ?>
+</table>
 
 
 </body>

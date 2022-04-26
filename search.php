@@ -12,8 +12,8 @@
        	  <li onclick="location.href='about.php';">Sobre</li>
 		  <li onclick="location.href='contacto.php';">Contacto</li>
 		  <li onclick="location.href='search.php';">Procurar</li>
-		  
-		  <div class="dropdown">
+      
+      <div class="dropdown">
 		  <li onclick="location.href='#';">Marcas</li>
           <div class="dropdown-content">
           <?php
@@ -33,6 +33,7 @@ if($result->num_rows > 0){
           </div>
 
        </ul>
+
 	 </div>
 </div>
 </center>
@@ -85,7 +86,6 @@ if($result->num_rows > 0){
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  text-align: center;
 }
 
 .dropdown-content a {
@@ -93,7 +93,6 @@ if($result->num_rows > 0){
   padding: 15px 40px;
   text-decoration: none;
   display: block;
-  text-align: center;
 }
 
 .dropdown-content a:hover {background-color: #ddd;}
@@ -105,7 +104,7 @@ if($result->num_rows > 0){
 
 body{
 	   	 background-color: #1b1c1e;
-			font-family: sans-serif;
+            font-family: sans-serif;
 	   }
 
 .header{
@@ -192,6 +191,28 @@ body{
   }
 }
 
+input[type=text] {
+    width: 20%;
+    background-color: white;
+    color: black;
+    padding: 14px 5px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    font-family: sans-serif;
+  }
+
+  button[type=submit] {
+    width: 10%;
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: sans-serif;
+  }
 
 </style>
 </head>
@@ -205,31 +226,65 @@ $username = "root";
 $password = "";
 $database = "xilakicks";
 $conn = NEW Mysqli($servername, $username, $password, $database);
-
-$query = "SELECT * FROM sneakers INNER JOIN images ON sneakers.Modelo = images.Modelo;"; 
-$query_run = mysqli_query($conn, $query);
-
-while($row = mysqli_fetch_array($query_run)){
-  ?>
-  <center>
-<div class="row">
-<div class="col-12">
-<div class="card">
-  <div class="container">
-  <img src="<?php echo $row['image_url']?> ." alt="Avatar" style="width:100%">
-      <h4><b>Modelo: <?php echo $row['Modelo'] ?> </b></h4> 
-      <p>Marca: <?php echo $row['Marca'] ?> </p> 
-      <p>Preco: <?php echo $row['Valor'] ?>€ </p> 
-	  <p style="text-align: right;color:green;">Quantidade Disponivel: <?php echo $row['Quantidade'] ?> </p> 
-  </div>
-</div>
-</div>
-</div>
-
-<?php
-}
 ?>
 
+<div style="margin: 20px;border: 20px;">
+<center>
+<form action="" method="GET">
+    <div class="input-group mb-3">
+    <h3 style="font-size: 30px;">Procurar Sneakers</h3>
+    <input type="text" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" placeholder="Procurar Sneakers">
+    <br><button type="submit">Procurar</button>
+    <br>
+    </div>
+    <br>
+</form>
 
+
+    <?php 
+    $con = mysqli_connect("localhost","root","","xilakicks");
+        if(isset($_GET['search']))
+        {
+        $filtervalues = $_GET['search'];
+
+
+        $query = "SELECT * FROM sneakers INNER JOIN images ON sneakers.Modelo = images.Modelo WHERE (Marca) LIKE '%$filtervalues%'";
+
+
+        $query_run = mysqli_query($con, $query);
+
+            if(mysqli_num_rows($query_run) > 0)
+            {
+            foreach($query_run as $items)
+            {
+            ?>
+<div class="row">
+<div class="col-12">
+                <div class="card">
+                <div class="container">
+                <img src="<?php echo $items['image_url']?> ." alt="Avatar" style="width:100%">
+                    <h4><b>Modelo: <?php echo $items['Modelo'] ?> </b></h4> 
+                    <p>Marca: <?php echo $items['Marca'] ?> </p> 
+                    <p>Preco: <?php echo $items['Valor'] ?>€ </p> 
+                    <p style="text-align: right;color:green;">Quantidade Disponivel: <?php echo $items['Quantidade'] ?> </p> 
+                </div>
+                </div>   
+                </div>   
+                </div>  
+                        
+            <?php
+            }
+            }
+else
+    {?>
+        <p style="color: red; font-size: 20px;"> Sem Resultados!</p> 
+        
+
+<?php
+    }
+        }
+?>
+<center>
+    </div>
 </body>
 </html> 
