@@ -10,7 +10,6 @@
        <ul>
        	  <li onclick="location.href='index.php';">Home</li>
        	  <li onclick="location.href='about.php';">Sobre</li>
-		  <li onclick="location.href='contacto.php';">Contacto</li>
 		  <li onclick="location.href='search.php';">Procurar</li>
       
       <div class="dropdown">
@@ -105,6 +104,7 @@ if($result->num_rows > 0){
 body{
 	   	 background-color: #1b1c1e;
             font-family: sans-serif;
+            overflow: scroll; /* Show scrollbars */
 	   }
 
 .header{

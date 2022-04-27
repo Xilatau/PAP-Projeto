@@ -3,6 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Xilakicks</title>
+
 <center>
 <img src="logo1.gif" alt="Computer man" style="width:200px;height:200px;">
 <div class="header">
@@ -10,7 +11,6 @@
        <ul>
        	  <li onclick="location.href='index.php';">Home</li>
        	  <li onclick="location.href='about.php';">Sobre</li>
-		  <li onclick="location.href='contacto.php';">Contacto</li>
 		  <li onclick="location.href='search.php';">Procurar</li>
 		  
 		  <div class="dropdown">
@@ -196,7 +196,6 @@ body{
 </style>
 </head>
 <body>
-<br>
 
 
 <?php
@@ -211,6 +210,7 @@ $query_run = mysqli_query($conn, $query);
 
 while($row = mysqli_fetch_array($query_run)){
   ?>
+  
   <center>
 <div class="row">
 <div class="col-12">
@@ -229,7 +229,5 @@ while($row = mysqli_fetch_array($query_run)){
 <?php
 }
 ?>
-
-
 </body>
 </html> 

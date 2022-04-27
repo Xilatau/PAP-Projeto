@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sobre nós</title> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xilakicks</title>
 
 <center>
 <img src="logo1.gif" alt="Computer man" style="width:200px;height:200px;">
@@ -11,9 +11,9 @@
        <ul>
        	  <li onclick="location.href='index.php';">Home</li>
        	  <li onclick="location.href='about.php';">Sobre</li>
-		  <li onclick="location.href='contacto.php';">Contacto</li>
-      <li onclick="location.href='search.php';">Procurar</li>
-      <div class="dropdown">
+		  <li onclick="location.href='search.php';">Procurar</li>
+		  
+		  <div class="dropdown">
 		  <li onclick="location.href='#';">Marcas</li>
           <div class="dropdown-content">
           <?php
@@ -31,8 +31,8 @@ if($result->num_rows > 0){
 ?>
           </div>
           </div>
-       </ul>
 
+       </ul>
 	 </div>
 </div>
 </center>
@@ -85,6 +85,7 @@ if($result->num_rows > 0){
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  text-align: center;
 }
 
 .dropdown-content a {
@@ -92,6 +93,7 @@ if($result->num_rows > 0){
   padding: 15px 40px;
   text-decoration: none;
   display: block;
+  text-align: center;
 }
 
 .dropdown-content a:hover {background-color: #ddd;}
@@ -101,85 +103,27 @@ if($result->num_rows > 0){
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  background-color: #1b1c1e;
-  overflow: hidden; /* Hide scrollbars */
-}
+body{
+	   	 background-color: #1b1c1e;
+			font-family: sans-serif;
+      overflow: scroll; /* Show scrollbars */
+	   }
 
-html {
-  box-sizing: border-box;
-}
+.header{
+	   	 width: 100%;
+	   	 height: 100%;
+	   	 background-size: cover;
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
+	   }
 
-p{
+.p{
 	color: white;
 	font-family: sans-serif;
-	font-size: 20px;
+	font-size: 30px;
 	text-align: center;
 }
 
-.column {
-  float: left;
-  width: 100%;
-  margin-bottom: 16px;
-  padding: 0 8px;
-}
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 8px;
-}
-
-.about-section {
-  padding: 50px;
-  text-align: center;
-  background-color: #474e5d;
-  color: white;
-}
-
-.container {
-  padding: 0 16px;
-}
-
-.container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.title {
-  color: grey;
-}
-
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-}
-
-.button:hover {
-  background-color: #555;
-}
-
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
-    display: block;
-  }
-}
-
-.navbar ul li{
+     .navbar ul li{
 	   	list-style-type: none;
 	   	display:inline-block;
 	   	padding: 10px 50px;
@@ -194,27 +138,86 @@ p{
 	   .navbar ul li:hover{
 	   	background: red;
 	   }
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 30%;
+  color: white;
+  background-color: black;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+}
+
+
 </style>
 </head>
 <body>
 
 
-<h2 style="text-align:center">Sobre Xilakicks</h2>
+<center>
 <div class="row">
-  <div class="column">
-    <div class="card">
-    <center>
-    <img src="david.jpg" alt="Mike" width="7%" height="7%">
-      <div class="container">
-        <h2>David Lopes</h2>
-        <p class="title">CEO & Founder</p>
-        <p>Aluno finalista do curso de gestão e programação de sistemas informáticos  </p>
-        <p>davidjlopes0@gmail.com</p>
-        <p><button onclick="location.href='mailto:davidjlopes0@gmail.com';" class="button">Contact</button></p>
-      </div>
-    </div>
+<div class="col-12">
+<div class="card">
+  <div class="container">
+  <center><br>
+  <img src="david.jpg" alt="Avatar" style="width:30%">
+</center>
+      <h4 style="text-align: center;"><b>David Joao Martins Lopes</b></h4> 
+      <p style="text-align: center;">Aluno finalista do curso de gestao e programacao de sistemas informáticos</p> 
+      <br>
+      <p style="text-align: right;">Criador de Xilakicks</p> 
   </div>
-  </div>
+</div>
+</div>
+</div>
+</center>
+
+
 
 </body>
-</html>
+</html> 
