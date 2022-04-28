@@ -203,7 +203,7 @@ input[type=text] {
   }
 
   button[type=submit] {
-    width: 10%;
+    width: 20%;
     background-color: red;
     color: white;
     padding: 14px 20px;
@@ -234,7 +234,8 @@ $conn = NEW Mysqli($servername, $username, $password, $database);
     <div class="input-group mb-3">
     <h3 style="font-size: 30px;">Procurar Sneakers</h3>
     <input type="text" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" placeholder="Procurar Sneakers">
-    <br><button type="submit">Procurar</button>
+    <br>
+    <button type="submit">Procurar</button>
     <br>
     </div>
     <br>

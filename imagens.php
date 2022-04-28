@@ -86,7 +86,6 @@ img{
 		<a href="input_marca.php">Adicionar Marca</a>
 		<a href="input_sneakers.php">Adicionar Sneakers</a>
         <a href="show_sneakers.php">Mostrar Sneakers</a>
-        <a href="input_sales.php">Efetuar Vendas</a>  
 		<a href="imagens.php">Adicionar Imagens</a>
         <a style="float: right;display:block;" href="reset-password.php">Perfil</a>
         <a style="float: right;display:block;" href="logout.php">Logout</a>
@@ -111,7 +110,7 @@ img{
 <br>
 <br>
 <br>
-    <h3 style="font-size: 25px;">Procurar Sneakers</h3>
+    <h3 style="font-size: 25px;">Adicionar Imagens</h3>
 <?php
 $servername = "localhost";
 $username = "root";
@@ -184,7 +183,10 @@ if (isset($_POST['submit']) && isset($_FILES['my_image'])) {
 				// Insert into Database
 				$sql = "INSERT INTO images(modelo,image_url) VALUES ('$modelos','$img_upload_path')";
 				mysqli_query($conn, $sql);
-				header ("Location:home.php");
+                echo('<script type="text/JavaScript">
+                alert("Imagem adicionada com sucesso!");
+                location.replace("imagens.php");
+                </script>');
 			}else {
 				$em = "Nao é possivel adicionar imagens deste tipo.";
 		        header("Location: imagens.php?error=$em");
@@ -192,7 +194,7 @@ if (isset($_POST['submit']) && isset($_FILES['my_image'])) {
 		}
 	}else {
         echo('<script type="text/JavaScript">
-        alert("É necessario preencher todos os campos!!!");
+        alert("É necessario preencher todos os campos!");
         location.replace("imagens.php");
         </script>');
 	}
