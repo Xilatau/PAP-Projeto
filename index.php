@@ -229,5 +229,15 @@ while($row = mysqli_fetch_array($query_run)){
 <?php
 }
 ?>
+
+</div>
+<hr style="width:90%;">
+</div>
+
+<div  class="footer">
+	<p style="color:black;text-align:center;font-size:1em;">Copyright © 2021 Xilakicks.<br> All rights reserved.</p>
+  <p><a href="mailto:davidjlopes0@gmail.com">Contacto</a></p>
+</div>
+
 </body>
 </html> 

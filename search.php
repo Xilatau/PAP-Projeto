@@ -287,5 +287,15 @@ else
 ?>
 <center>
     </div>
+
+    </div>
+<hr style="width:90%;">
+</div>
+
+<div  class="footer">
+	<p style="color:black;text-align:center;font-size:1em;">Copyright © 2021 Xilakicks.<br> All rights reserved.</p>
+  <center><p><a href="mailto:davidjlopes0@gmail.com">Contacto</a></p></center>
+</div>
+    
 </body>
 </html> 

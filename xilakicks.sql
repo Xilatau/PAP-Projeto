@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Mar-2022 às 22:16
+-- Tempo de geração: 28-Abr-2022 às 22:08
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -37,9 +37,15 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`Modelo`, `image_url`) VALUES
-('Air Jordan', 'uploads/IMG-623774514cd845.57810387.jpg'),
-('VaporMax', 'uploads/IMG-623776ac877435.08845498.jpg'),
-('sgsdrgd', 'uploads/IMG-62377cda1677a7.59479115.png');
+('Air Jordan', 'uploads/IMG-6266f5fe6c47c7.85000072.png'),
+('beluga', 'uploads/IMG-62680a821671a8.80969635.png'),
+('Disruptor', 'uploads/IMG-62681b04775dd0.00973034.png'),
+('VaporMax', 'uploads/IMG-62681b4e9e7a12.23850367.png'),
+('550', 'uploads/IMG-62681ca112d7f7.69524854.png'),
+('Foam runner', 'uploads/IMG-62681d3832b910.46167545.png'),
+('Old Skool', 'uploads/IMG-62689bd047a838.10180294.png'),
+('OZWEEGO White', 'uploads/IMG-62689c84952bd7.66054371.png'),
+('exemplo', 'uploads/IMG-626aa732b34109.99650443.png');
 
 -- --------------------------------------------------------
 
@@ -66,7 +72,8 @@ INSERT INTO `marcas` (`ID`, `Marca`) VALUES
 (13, 'Fila'),
 (14, 'Massimo Dutti'),
 (15, 'sadasd'),
-(16, 'sdfgdhtry');
+(16, 'sdfgdhtry'),
+(17, 'exemplo');
 
 -- --------------------------------------------------------
 
@@ -89,10 +96,13 @@ CREATE TABLE `sneakers` (
 INSERT INTO `sneakers` (`ID`, `Marca`, `Modelo`, `Quantidade`, `Valor`) VALUES
 (1, 'Nike', 'Air Jordan', 96, 498),
 (5, 'Yeezy', 'beluga', 100, 400),
-(6, 'Nike', 'Air Jordan', 100, 450),
 (7, 'Fila', 'Disruptor', 10, 100),
 (9, 'Nike', 'VaporMax', 2, 100),
-(20, 'Yeezy', 'te465trq', 3262, 245645);
+(22, 'New Balance', '550', 10, 300),
+(23, 'Yeezy', 'Foam runner', 20, 300),
+(24, 'Vans', 'Old Skool', 5, 50),
+(25, 'Adidas', 'OZWEEGO White', 20, 120),
+(27, 'exemplo', 'exemplo', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -113,26 +123,6 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
 (1, 'xila', '$2y$10$9phDpSxsuv7mIFcj87ynMeF4z3CVnyWHzUx38WWo6XX5TsLH71AGC', '2022-01-12 15:26:02');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `usuarios`
---
-
-CREATE TABLE `usuarios` (
-  `ID` int(10) UNSIGNED ZEROFILL NOT NULL,
-  `login` varchar(30) DEFAULT NULL,
-  `senha` varchar(40) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `usuarios`
---
-
-INSERT INTO `usuarios` (`ID`, `login`, `senha`) VALUES
-(0000000001, 'xila', '81dc9bdb52d04dc20036dbd8313ed055'),
-(0000000002, 'xila1', '81dc9bdb52d04dc20036dbd8313ed055');
 
 -- --------------------------------------------------------
 
@@ -172,12 +162,6 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Índices para tabela `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Índices para tabela `vendas`
 --
 ALTER TABLE `vendas`
@@ -191,25 +175,19 @@ ALTER TABLE `vendas`
 -- AUTO_INCREMENT de tabela `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `sneakers`
 --
 ALTER TABLE `sneakers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de tabela `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `ID` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `vendas`

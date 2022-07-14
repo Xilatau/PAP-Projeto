@@ -1,0 +1,9 @@
+Para entrar no backoffice, o link é http://localhost/XilaKicks/login.php.
+As informacoes de login sao:
+user:xila
+pass:123456
+
+Para ir para o site principal, o link é http://localhost/XilaKicks/index.php.
+
+David Lopes
+GPSI19
